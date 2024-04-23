@@ -61,8 +61,8 @@ Github Actions:
 - name: Show purescript version
   run: |
     export PATH=${HOME}/.bun/bin:${PATH}
-    type purescript
+    type purs
     type spago
-    purescript --version
+    purs --version
     spago --version
 ```
