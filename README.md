@@ -58,7 +58,6 @@ Github Actions:
     plugin: purescript
     args: |
       setup
-    working-directory: example
 - name: Show purescript version
   run: |
     export PATH=${HOME}/.bun/bin:${PATH}
