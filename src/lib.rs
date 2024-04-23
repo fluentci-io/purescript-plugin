@@ -20,11 +20,12 @@ pub fn setup(version: String) -> FnResult<String> {
 
     let stdout = dag()
         .pkgx()?
+        .with_exec(vec!["bun", "install", "-g", "spago"])?
+        .with_exec(vec!["type npm || pkgx install npmjs.com"])?
         .with_exec(vec![
-            "bun",
+            "npm",
             "install",
             "-g",
-            "spago",
             &format!("purescript@{}", version),
         ])?
         .stdout()?;
@@ -39,8 +40,12 @@ pub fn build(args: String) -> FnResult<String> {
         "setup",
         vec!["latest"],
     )?;
+
     let stdout = dag()
         .pkgx()?
+        .with_exec(vec![
+            "type purs > /dev/null 2>&1 || pkgx npm install -g purescript",
+        ])?
         .with_exec(vec!["bunx", "spago", "build", &args])?
         .stdout()?;
     Ok(stdout)
@@ -55,6 +60,9 @@ pub fn test(args: String) -> FnResult<String> {
     )?;
     let stdout = dag()
         .pkgx()?
+        .with_exec(vec![
+            "type purs > /dev/null 2>&1 || pkgx npm install -g purescript",
+        ])?
         .with_exec(vec!["bunx", "spago", "test", &args])?
         .stdout()?;
     Ok(stdout)
@@ -69,6 +77,9 @@ pub fn bundle_app(args: String) -> FnResult<String> {
     )?;
     let stdout = dag()
         .pkgx()?
+        .with_exec(vec![
+            "type purs > /dev/null 2>&1 || pkgx npm install -g purescript",
+        ])?
         .with_exec(vec!["bunx", "spago", "bundle-app", &args])?
         .stdout()?;
     Ok(stdout)
@@ -83,6 +94,9 @@ pub fn bundle_module(args: String) -> FnResult<String> {
     )?;
     let stdout = dag()
         .pkgx()?
+        .with_exec(vec![
+            "type purs > /dev/null 2>&1 || pkgx npm install -g purescript",
+        ])?
         .with_exec(vec!["bunx", "spago", "bundle-module", &args])?
         .stdout()?;
     Ok(stdout)
@@ -97,6 +111,9 @@ pub fn docs(args: String) -> FnResult<String> {
     )?;
     let stdout = dag()
         .pkgx()?
+        .with_exec(vec![
+            "type purs > /dev/null 2>&1 || pkgx npm install -g purescript",
+        ])?
         .with_exec(vec!["bunx", "spago", "docs", &args])?
         .stdout()?;
     Ok(stdout)
@@ -111,6 +128,9 @@ pub fn install(args: String) -> FnResult<String> {
     )?;
     let stdout = dag()
         .pkgx()?
+        .with_exec(vec![
+            "type purs > /dev/null 2>&1 || pkgx npm install -g purescript",
+        ])?
         .with_exec(vec!["bunx", "spago", "install", &args])?
         .stdout()?;
     Ok(stdout)
@@ -125,6 +145,9 @@ pub fn verify(args: String) -> FnResult<String> {
     )?;
     let stdout = dag()
         .pkgx()?
+        .with_exec(vec![
+            "type purs > /dev/null 2>&1 || pkgx npm install -g purescript",
+        ])?
         .with_exec(vec!["bunx", "spago", "verify", &args])?
         .stdout()?;
     Ok(stdout)
@@ -139,6 +162,9 @@ pub fn verify_set(args: String) -> FnResult<String> {
     )?;
     let stdout = dag()
         .pkgx()?
+        .with_exec(vec![
+            "type purs > /dev/null 2>&1 || pkgx npm install -g purescript",
+        ])?
         .with_exec(vec!["bunx", "spago", "verify-set", &args])?
         .stdout()?;
     Ok(stdout)
@@ -153,6 +179,9 @@ pub fn bump_version(args: String) -> FnResult<String> {
     )?;
     let stdout = dag()
         .pkgx()?
+        .with_exec(vec![
+            "type purs > /dev/null 2>&1 || pkgx npm install -g purescript",
+        ])?
         .with_exec(vec!["bunx", "spago", "bump-version", &args])?
         .stdout()?;
     Ok(stdout)
