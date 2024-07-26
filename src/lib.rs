@@ -20,7 +20,7 @@ pub fn setup(version: String) -> FnResult<String> {
 
     let stdout = dag()
         .pkgx()?
-        .with_exec(vec!["bun", "install", "-g", "spago"])?
+        .with_exec(vec!["npm", "install", "-g", "spago"])?
         .with_exec(vec!["type npm || pkgx install npmjs.com"])?
         .with_exec(vec![
             "npm",
