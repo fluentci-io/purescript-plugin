@@ -1,5 +1,6 @@
 # Purescript Plugin
 
+[![fluentci pipeline](https://shield.fluentci.io/x/purescript)](https://pkg.fluentci.io/purescript)
 [![ci](https://github.com/fluentci-io/purescript-plugin/actions/workflows/ci.yml/badge.svg)](https://github.com/fluentci-io/purescript-plugin/actions/workflows/ci.yml)
 
 This plugin sets up your CI/CD pipeline with a specific version of [purescript](https://www.purescript.org/).
@@ -43,7 +44,7 @@ use fluentci_pdk::dag;
 
 // ...
 
-dag().call("https://pkg.fluentci.io/purescript@v0.1.0?wasm=1", "setup", vec!["latest"])?;
+dag().call("https://pkg.fluentci.io/purescript@v0.1.1?wasm=1", "setup", vec!["latest"])?;
 ```
 
 ## 📚 Examples
@@ -60,7 +61,6 @@ Github Actions:
       setup
 - name: Show purescript version
   run: |
-    export PATH=${HOME}/.bun/bin:${PATH}
     type purs
     type spago
     purs --version
